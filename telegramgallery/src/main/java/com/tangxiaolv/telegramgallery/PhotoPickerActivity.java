@@ -51,7 +51,7 @@ public class PhotoPickerActivity extends BaseFragment
 
         void actionButtonPressed(boolean canceled);
 
-        boolean didSelectVideo(String path);
+        boolean didSelectVideo(ArrayList<String> path);
 
         int getCheckboxTag(int imageId);
 
@@ -203,7 +203,11 @@ public class PhotoPickerActivity extends BaseFragment
                     if (i < 0 || i >= selectedAlbum.photos.size()) {
                         return;
                     }
-                    if (delegate.didSelectVideo(selectedAlbum.photos.get(i).path)) {
+					ArrayList<String> paths = new ArrayList<>();
+					for(ArrayList<PhotoEntry> PE : selectedAlbum.photos){
+						paths.add(PE.path);
+					}
+                    if (delegate.didSelectVideo(paths)) {
                         finishFragment();
                     }
                 } else {

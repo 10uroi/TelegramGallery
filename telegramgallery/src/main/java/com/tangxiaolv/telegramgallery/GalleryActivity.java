@@ -84,9 +84,11 @@ public class GalleryActivity extends Activity implements ActionBarLayout.ActionB
         }
 
         @Override
-        public boolean didSelectVideo(String path) {
+        public boolean didSelectVideo(ArrayList<String> path) {
             Intent intent = new Intent();
-            intent.putExtra(VIDEO, path);
+			system.out.println("---------:"+path.size());
+			
+            intent.putExtra(VIDEO, path.get(0));
             setResult(Activity.RESULT_OK, intent);
             return true;
         }

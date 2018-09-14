@@ -41,7 +41,7 @@ public class PhotoAlbumPickerActivity extends BaseFragment
     public interface PhotoAlbumPickerActivityDelegate {
         void didSelectPhotos(ArrayList<String> photos, ArrayList<String> captions);
 
-        boolean didSelectVideo(String path);
+        boolean didSelectVideo(ArrayList<String> path);
 
         void startPhotoSelectActivity();
     }
@@ -571,7 +571,7 @@ public class PhotoAlbumPickerActivity extends BaseFragment
                     }
 
                     @Override
-                    public boolean didSelectVideo(String path) {
+                    public boolean didSelectVideo(ArrayList<String> path) {
                         removeSelfFromStack();
                         return delegate.didSelectVideo(path);
                     }
